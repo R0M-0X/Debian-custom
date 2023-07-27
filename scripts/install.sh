@@ -6,17 +6,34 @@
 ####### Dont run as root, run the script with sudo
 apt update -yy
 # Basic
-apt install net-tools curl git sudo htop ftp open-vm-* unzip sudo smbclient -yy
+apt install net-tools curl git sudo htop ftp open-vm-* unzip gnupg2 sudo smbclient -yy
 # Web
 apt install apache2 mariadb-server php -yy
 # Custom
 apt install neofetch conky -yy
 # Redteam tools
-apt install nmap -yy
+apt install nmap smbmap -yy
 # Multimedia
 apt install vlc -yy
 # Other
-apt install onedrive obsidian -yy
+apt install onedrive -yy
+# Network tools
+apt install wireshark tcpdump -yy
+# -> suricata, backuppc
+
+wget --quiet -O - https://deb.rom.ovh/apt/debian/key/deb.rom.ovh.asc | tee /etc/apt/keyrings/deb.rom.ovh.asc
+echo "deb [signed-by=/etc/apt/keyrings/deb.rom.ovh.asc arch=$( dpkg --print-architecture )] https://deb.rom.ovh/apt/debian stable main" | tee /etc/apt/sources.list.d/rom-os.list
+apt update
+
+apt install veeam-release-deb obsidian
+
+## Icons
+
+#add-apt-repository ppa:papirus/papirus
+#apt install papirus-icon-theme
+
+add-apt-repository ppa:numix/ppa
+apt install numix-icon-theme-circle -yy
 
 
 # onedrive --synchronize (attention lance la première synchro)
@@ -34,13 +51,32 @@ systemctl enable cockpit
 systemctl start cockpit
 # localhost http://localhost:9090
 
-sudo usermod -aG sudo $USER
+## Google Chrome -> Ajouter au depot ROM-OS
+# Source -> https://www.geekersdigest.com/how-to-install-google-chrome-from-apt-repository/
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/chrome.list
+apt update -yy
+apt install google-chrome-stable -yy
+rm /etc/apt/sources.list.d/chrome.list
+apt update -yy
 
-# PXE server & DHCP no start auto
+# https://www.spotify.com/us/download/linux/
+# -------------------------------------------------------------------------------------------------------------------------------------------
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update && sudo apt-get install spotify-client -yy
+# Si la première connexion ne fonctionne pas, il faut vérifier le navigarteur par defaut (ne fonctionne pas avec Konqueror)
 
-# Apache
-rm -r /var/www/html
-touch /var/www/index.html
+## Visual Studio Code
+sudo apt-get install wget gpg -yy
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+rm -f packages.microsoft.gpg
+
+sudo apt install apt-transport-https -yy
+sudo apt update -yy
+sudo apt install code -yy
 
 # Ulauncher
 sudo apt update && sudo apt install -y gnupg
