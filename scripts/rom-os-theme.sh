@@ -1,8 +1,9 @@
 #!/bin/bash
-_CUSTOM_PATH=custom
+
+path=’readlink -f “${BASH_SOURCE:-$0}”’
+DIR_PATH=’dirname $path’
 
 if [ "$(id -u)" == 0 ]; then echo "Please don't run as root." >&2; exit 1; fi
-
 # Require script to be run via sudo, but not as root
 sudo apt update
 sudo apt install npm web-greeter -yy
@@ -18,6 +19,7 @@ cd ./custom/lightdm/neon
 make build
 sudo make install
 
+cd $DIR_PATH
 sudo cp ./custom/etc/lightdm/lightdm.conf /etc/lightdm/
 sudo cp ./custom/etc/lightdm/web-greeter.yml /etc/lightdm/
 
