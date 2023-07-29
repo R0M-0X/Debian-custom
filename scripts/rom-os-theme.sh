@@ -23,9 +23,9 @@ cd ..
 sudo rm -r Colloid-icon-theme
 
 # Change Cinnamon settings
-gsettings set org.cinnamon.desktop.wm.preferences theme Dracula
-gsettings set org.cinnamon.desktop.interface gtk-theme Dracula
-gsettings set org.cinnamon.theme name Dracula
+gsettings set org.cinnamon.desktop.wm.preferences theme dracula
+gsettings set org.cinnamon.desktop.interface gtk-theme dracula
+gsettings set org.cinnamon.theme name dracula
 
 gsettings set org.cinnamon.desktop.background picture-uri "file:///usr/share/wallpapers/wallpaper.jpg"
 
