@@ -1,12 +1,10 @@
 #!/bin/bash
 
-path='readlink -f "${BASH_SOURCE:-$0}"'
-DIR_PATH='dirname $path'
-
 if [ "$(id -u)" == 0 ]; then echo "Please don't run as root." >&2; exit 1; fi
 # Require script to be run via sudo, but not as root
+sudo add-apt-repository ppa:papirus/papirus
 sudo apt update
-sudo apt install npm web-greeter -yy
+sudo apt install papirus-icon-theme
 
 # Change to wget
 sudo cp ./custom/wallpapers/wallpaper.jpg /usr/share/wallpapers/
@@ -14,14 +12,15 @@ sudo cp -r ./custom/themes/Dracula /usr/share/themes/
 sudo cp ./custom/root/.bashrc /root/
 # To all users (/etc/skel)
 sudo cp ./custom/etc/skel/.bashrc /etc/skel/
+sudo cp ./custom/etc/skel/.bashrc /home/$USER/
 
-cd ./custom/lightdm/neon
-make build
-sudo make install
+# cd ./custom/lightdm/neon
+# make build
+# sudo make install
 
-cd $DIR_PATH
+#cd $DIR_PATH
 sudo cp ./custom/etc/lightdm/lightdm.conf /etc/lightdm/
-sudo cp ./custom/etc/lightdm/web-greeter.yml /etc/lightdm/
+# sudo cp ./custom/etc/lightdm/web-greeter.yml /etc/lightdm/
 
 #wget https://github.com/dracula/gtk/archive/master.zip -O dracula.zip
 #sudo mkdir -p /usr/share/themes/dracula
@@ -43,7 +42,7 @@ gsettings set org.cinnamon.theme name Dracula
 
 gsettings set org.cinnamon.desktop.background picture-uri "file:///usr/share/wallpapers/wallpaper.jpg"
 
-gsettings set org.cinnamon.desktop.interface icon-theme Colloid-grey-nord-dark
+gsettings set org.cinnamon.desktop.interface icon-theme ePapirus-Dark
 
 
 # sed -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Visual Studio Dark"/g' "$HOME/.config/Code/User/settings.json"

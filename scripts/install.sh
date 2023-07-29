@@ -30,15 +30,15 @@ libcurl4-openssl-dev libssl-dev rubygems ruby ruby-dev jq mariadb-client dirb wh
 sslsplit dnsrecon sipsak braa onesixtyone sipvicious build-essential \
 make gcc fontconfig fonts-powerline wireshark vlc smbmap neoftech conky apache2 mariadb-server php \
 net-tools htop gnupg2 veeam-release-deb obsidian google-chrome-stable spotify-client wget gpg apt-transport-https \
-code npm web-greeter -yy
+code -yy
 
 ##### Install Wine
-dpkg --add-architecture i386
-mkdir -pm755 /etc/apt/keyrings
-wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
-wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
-apt update -yy
-apt install --install-recommends winehq-stable -yy
+sudo dpkg --add-architecture i386
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
+sudo apt update -yy
+sudo apt install --install-recommends winehq-stable -yy
 
 ##### Install cockpit
 sudo apt install cockpit cockpit-machines -yy
@@ -69,7 +69,7 @@ sudo mkdir /scripts
 sudo mkdir -p /pentest/{web,scans,files,users}
 
 ## Build out Pentest area:
-mkdir -p /root/Pentest/web
-mkdir -p /root/Pentest/scans
-mkdir -p /root/Pentest/files
-mkdir -p /root/Pentest/users
+sudo mkdir -p /root/Pentest/web
+sudo mkdir -p /root/Pentest/scans
+sudo mkdir -p /root/Pentest/files
+sudo mkdir -p /root/Pentest/users
