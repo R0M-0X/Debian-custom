@@ -14,7 +14,7 @@ sudo cp ./custom/root/.bashrc /root/
 # To all users (/etc/skel)
 sudo cp ./custom/etc/skel/.bashrc /etc/skel/
 
-cd ./custom/lightdm/lightdm-neon
+cd ./custom/lightdm/neon
 make build
 sudo make install
 
