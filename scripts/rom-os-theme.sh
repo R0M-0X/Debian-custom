@@ -1,7 +1,7 @@
 #!/bin/bash
 
-path=’readlink -f “${BASH_SOURCE:-$0}”’
-DIR_PATH=’dirname $path’
+path='readlink -f "${BASH_SOURCE:-$0}"'
+DIR_PATH='dirname $path'
 
 if [ "$(id -u)" == 0 ]; then echo "Please don't run as root." >&2; exit 1; fi
 # Require script to be run via sudo, but not as root
