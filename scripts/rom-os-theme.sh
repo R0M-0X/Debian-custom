@@ -18,19 +18,41 @@ cd /home/$USER
 [ -d Colloid-icon-theme ] && rm -r Colloid-icon-theme
 git clone https://github.com/vinceliuice/Colloid-icon-theme.git
 cd Colloid-icon-theme
-sudo ./install.sh -d /usr/share/icons -n Colloid -s default -t purple
+sudo ./install.sh -d /usr/share/icons -n Colloid -s nord -t grey
 cd ..
 sudo rm -r Colloid-icon-theme
 
 # Change Cinnamon settings
-gsettings set org.cinnamon.desktop.wm.preferences theme dracula
-gsettings set org.cinnamon.desktop.interface gtk-theme dracula
-gsettings set org.cinnamon.theme name dracula
+gsettings set org.cinnamon.desktop.wm.preferences theme Dracula
+gsettings set org.cinnamon.desktop.interface gtk-theme Dracula
+gsettings set org.cinnamon.theme name Dracula
 
 gsettings set org.cinnamon.desktop.background picture-uri "file:///usr/share/wallpapers/wallpaper.jpg"
 
-gsettings set org.cinnamon.desktop.interface icon-theme Colloid-purple
+gsettings set org.cinnamon.desktop.interface icon-theme Colloid-grey-nord-dark
 
 
 # sed -i -e 's/"workbench.colorTheme": ".*"/"workbench.colorTheme": "Visual Studio Dark"/g' "$HOME/.config/Code/User/settings.json"
 
+# Utiliser le dossier /etc/skel -> equivalent du dossier /users/default de Windows
+
+
+# wget https://github.com/R0M-LR/rom-os/archive/master.zip
+#unzip -o master.zip
+#cd master
+#cp root/.bashrc /root/
+
+# To all users (/etc/skel)
+#cp etc/skel/.bashrc /etc/skel/
+
+#Faire un script dans le autostart avec les gsettings ?
+
+#mkdir -p /etc/skel/.config/dconf
+
+#cp /home/$USER/.config/dconf/user /etc/skel/.config/dconf
+
+
+
+#Then go to your .config folder and also .local folder and just make a copy of these two.
+#Then do a skel.
+#Then compare your .config and .config copy with each other with Meld.
