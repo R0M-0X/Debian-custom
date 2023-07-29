@@ -7,19 +7,21 @@ sudo apt update
 sudo apt install papirus-icon-theme
 
 # Change to wget
-sudo cp ./custom/wallpapers/wallpaper.jpg /usr/share/wallpapers/
-sudo cp -r ./custom/themes/Dracula /usr/share/themes/
-sudo cp ./custom/root/.bashrc /root/
+sudo cp ../custom/wallpapers/wallpaper.jpg /usr/share/wallpapers/
+sudo cp -r ../custom/themes/Dracula /usr/share/themes/
+sudo cp ../custom/root/.bashrc /root/
 # To all users (/etc/skel)
-sudo cp ./custom/etc/skel/.bashrc /etc/skel/
-sudo cp ./custom/etc/skel/.bashrc /home/$USER/
+sudo cp ../custom/etc/skel/.bashrc /etc/skel/
+sudo cp ../custom/etc/skel/.bashrc /home/$USER/
 
 # cd ./custom/lightdm/neon
 # make build
 # sudo make install
 
 #cd $DIR_PATH
-sudo cp ./custom/etc/lightdm/lightdm.conf /etc/lightdm/
+
+# sudo cp ../custom/etc/lightdm/lightdm.conf /etc/lightdm/
+
 # sudo cp ./custom/etc/lightdm/web-greeter.yml /etc/lightdm/
 
 #wget https://github.com/dracula/gtk/archive/master.zip -O dracula.zip
@@ -28,12 +30,12 @@ sudo cp ./custom/etc/lightdm/lightdm.conf /etc/lightdm/
 #sudo rm dracula.zip
 
 # Faire un fork pour être sur du DL
-[ -d Colloid-icon-theme ] && rm -r Colloid-icon-theme
-git clone https://github.com/vinceliuice/Colloid-icon-theme.git
-cd Colloid-icon-theme
-sudo ./install.sh -d /usr/share/icons -n Colloid -s nord -t grey
-cd ..
-sudo rm -r Colloid-icon-theme
+#[ -d Colloid-icon-theme ] && rm -r Colloid-icon-theme
+#git clone https://github.com/vinceliuice/Colloid-icon-theme.git
+#cd Colloid-icon-theme
+#sudo ./install.sh -d /usr/share/icons -n Colloid -s nord -t grey
+#cd ..
+#sudo rm -r Colloid-icon-theme
 
 # Change Cinnamon settings
 gsettings set org.cinnamon.desktop.wm.preferences theme Dracula
