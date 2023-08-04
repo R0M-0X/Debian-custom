@@ -19,7 +19,7 @@ sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo rm -f packages.microsoft.gpg
 
-sudo apt update -yy 
+sudo apt update 
 
 # -> suricata, backuppc
 
@@ -31,6 +31,9 @@ sslsplit dnsrecon sipsak braa onesixtyone sipvicious build-essential \
 make gcc fontconfig fonts-powerline wireshark vlc smbmap neoftech conky apache2 mariadb-server php \
 net-tools htop gnupg2 veeam-release-deb obsidian google-chrome-stable spotify-client wget gpg apt-transport-https \
 code -yy
+
+sudo apt update
+sudo apt install veeam -yy
 
 ##### Install Wine
 sudo dpkg --add-architecture i386
