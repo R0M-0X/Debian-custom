@@ -33,8 +33,8 @@ net-tools htop gnupg2 veeam-release-deb obsidian google-chrome-stable spotify-cl
 code -yy
 
 sudo apt update
+sudo apt install blksnap -yy
 sudo apt install veeam -yy
-sudo apt install -f -yy
 
 ##### Install Wine
 sudo dpkg --add-architecture i386
