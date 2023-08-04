@@ -34,6 +34,7 @@ code -yy
 
 sudo apt update
 sudo apt install veeam -yy
+sudo apt install -f -yy
 
 ##### Install Wine
 sudo dpkg --add-architecture i386
