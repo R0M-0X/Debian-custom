@@ -30,7 +30,7 @@ libcurl4-openssl-dev libssl-dev rubygems ruby ruby-dev jq mariadb-client dirb wh
 sslsplit dnsrecon sipsak braa onesixtyone sipvicious build-essential \
 make gcc fontconfig fonts-powerline wireshark vlc smbmap neoftech conky apache2 mariadb-server php \
 net-tools htop gnupg2 veeam-release-deb obsidian google-chrome-stable spotify-client wget gpg apt-transport-https \
-code -yy
+code software-properties-common -yy
 
 sudo apt update
 sudo apt install blksnap -yy
